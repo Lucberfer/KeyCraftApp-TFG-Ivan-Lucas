@@ -129,7 +129,7 @@
                            <String fx:value="shadow" />
                            <String fx:value="white-background" />
                         </styleClass>
-                        <AreaChart layoutY="37.0" prefHeight="553.0" prefWidth="500.0" title="Income's Chart" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AreaChart layoutY="37.0" prefHeight="553.0" prefWidth="500.0" title="Gráfico de Ingresos" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <xAxis>
                               <CategoryAxis side="BOTTOM" />
                            </xAxis>
@@ -144,7 +144,7 @@
                            <String fx:value="shadow" />
                            <String fx:value="white-background" />
                         </styleClass>
-                        <BarChart layoutX="20.0" layoutY="55.0" prefHeight="553.0" prefWidth="520.0" title="Customer's Chart" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <BarChart layoutX="20.0" layoutY="55.0" prefHeight="553.0" prefWidth="520.0" title="Gráfico de Productos" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <xAxis>
                               <CategoryAxis side="BOTTOM" />
                            </xAxis>
