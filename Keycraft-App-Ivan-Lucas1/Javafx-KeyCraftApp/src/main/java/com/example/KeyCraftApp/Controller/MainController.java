@@ -267,9 +267,9 @@ public class MainController implements Initializable {
                     menuShowData();
 
                     alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Atencion");
+                    alert.setTitle("Mensaje");
                     alert.setHeaderText(null);
-                    alert.setContentText("Ok!");
+                    alert.setContentText("¡Compra realizada!");
                     alert.showAndWait();
 
                     menuShowData();
