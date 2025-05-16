@@ -34,7 +34,6 @@
                   <Button fx:id="dashboard_button" alignment="CENTER" layoutX="8.0" layoutY="158.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="210.0" styleClass="nav-btn" text="Tablón" />
                   <Button fx:id="inventory_button" alignment="CENTER" layoutX="8.0" layoutY="216.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="210.0" styleClass="nav-btn" text="Inventario" />
                   <Button fx:id="menu_button" alignment="CENTER" layoutX="9.0" layoutY="274.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="210.0" styleClass="nav-btn" text="Menú" />
-                  <Button fx:id="customers_button" alignment="CENTER" layoutX="9.0" layoutY="332.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="210.0" styleClass="nav-btn" text="clientes" />
                   <Button fx:id="log_out_button" layoutX="9.0" layoutY="561.0" mnemonicParsing="false" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="9.0">
                      <graphic>
                         <FontAwesomeIconView glyphName="SIGN_OUT" size="1.5em" />
@@ -245,7 +244,7 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
-                        <Label layoutX="140.0" layoutY="411.0" text="Total: " />
+                        <Label layoutX="135.0" layoutY="411.0" text="Total: " />
                         <Label fx:id="menu_total" layoutX="178.0" layoutY="411.0" prefHeight="17.0" prefWidth="143.0" text="\$0.0">
                            <font>
                               <Font name="System Bold" size="12.0" />
@@ -256,8 +255,10 @@
 
                         <Label fx:id="menu_change" layoutX="178.0" layoutY="471.0" prefHeight="17.0" prefWidth="143.0" text="\$0.0" />
                         <Button fx:id="menu_pay_btn" layoutX="23.0" layoutY="509.0" mnemonicParsing="false" onAction="#menuPayBtn" prefHeight="44.0" prefWidth="306.0" styleClass="btn" text="Pagar" />
-                        <Button fx:id="menu_remove_btn" layoutX="19.0" layoutY="586.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="149.0" styleClass="btn" text="Eliminar" onAction="#menuRemoveBtn" />
+                        <Button fx:id="menu_remove_btn" layoutX="19.0" layoutY="586.0" mnemonicParsing="false" onAction="#menuRemoveBtn" prefHeight="44.0" prefWidth="149.0" styleClass="btn" text="Eliminar" />
                         <Button fx:id="menu_receipt_btn" layoutX="187.0" layoutY="586.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="142.0" styleClass="btn" text="Recibo" />
+                        <Label layoutX="135.0" layoutY="439.0" text="Pagó:" />
+                        <Label layoutX="128.0" layoutY="471.0" text="Cambio:" />
                      </children>
                   </AnchorPane>
                </AnchorPane>

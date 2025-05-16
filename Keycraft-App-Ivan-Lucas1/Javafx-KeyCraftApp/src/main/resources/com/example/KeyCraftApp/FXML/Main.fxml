@@ -245,7 +245,7 @@
                            </columnResizePolicy>
                         </TableView>
                         <Label layoutX="135.0" layoutY="411.0" text="Total: " />
-                        <Label fx:id="menu_total" layoutX="178.0" layoutY="411.0" prefHeight="17.0" prefWidth="143.0" text="\\$0.0">
+                        <Label fx:id="menu_total" layoutX="178.0" layoutY="411.0" prefHeight="17.0" prefWidth="143.0" text="\$0.0">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>

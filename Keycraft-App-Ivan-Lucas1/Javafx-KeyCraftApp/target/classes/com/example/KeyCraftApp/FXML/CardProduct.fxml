@@ -18,7 +18,7 @@
                <Font size="14.0" />
             </font>
          </Label>
-         <Label fx:id="card_price" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="63.0" text="0.0€">
+         <Label fx:id="card_price" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="63.0" text="\$0.0">
             <HBox.margin>
                <Insets right="10.0" />
             </HBox.margin>
