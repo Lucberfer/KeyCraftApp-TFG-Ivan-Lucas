@@ -54,29 +54,43 @@ public class CardProductController implements Initializable {
     private double total;
     private double pr;
 
+    /**
+     * Handles the action of adding a product to the customer's order.
+     * Checks product availability and updates the database accordingly.
+     */
     public void addBtn() {
+        // Initialize the main controller to get customer details
         MainController mainController = new MainController();
         mainController.getCustomerID();
+
+        // Retrieve the quantity selected by the user
         quantity = card_spinner.getValue();
         String check = "";
+
+        // Query to check product availability
         String checkAvailable = "SELECT status FROM Product WHERE product_id = ?";
         connection = Database.connectionDB();
+
         try {
+            // Get the current date for database operations
             Date date = new Date();
             java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 
+            // Variable to store the current stock of the product
             int checkStck = 0;
-            String checkStock = "SELECT stock FROM Product WHERE product_name = ?";
 
+            // Query to check the current stock of the product
+            String checkStock = "SELECT stock FROM Product WHERE product_name = ?";
             preparedStatement = connection.prepareStatement(checkStock);
             preparedStatement.setString(1, card_product_name.getText());
             resultSet = preparedStatement.executeQuery();
 
+            // Retrieve the stock value if the product exists
             if (resultSet.next()) {
                 checkStck = resultSet.getInt("stock");
-
             }
 
+            // If stock is zero, update the product status to "No disponible"
             if (checkStck == 0) {
                 String updateStock = "UPDATE Product SET status = ? WHERE product_id = ?";
                 preparedStatement = connection.prepareStatement(updateStock);
@@ -85,12 +99,16 @@ public class CardProductController implements Initializable {
                 preparedStatement.executeUpdate();
             }
 
+            // Check the availability status of the product
             preparedStatement = connection.prepareStatement(checkAvailable);
             preparedStatement.setString(1, productID);
             resultSet = preparedStatement.executeQuery();
+
             if (resultSet.next()) {
                 check = resultSet.getString("status");
             }
+
+            // Display error alert if the product is not available or quantity is zero
             if (!check.equals("Disponible") || quantity == 0) {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
@@ -98,7 +116,7 @@ public class CardProductController implements Initializable {
                 alert.setContentText("Error inesperado");
                 alert.showAndWait();
             } else {
-
+                // Check if the selected quantity exceeds available stock
                 if (checkStck < card_spinner.getValue()) {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
@@ -106,6 +124,7 @@ public class CardProductController implements Initializable {
                     alert.setContentText("No queda stock.");
                     alert.showAndWait();
                 } else {
+                    // Insert the order details into the Customer table
                     String insertData = "INSERT INTO Customer (customer_id, product_id, product_name, quantity, price, date, em_username) VALUES(?,?,?,?,?,?,?)";
                     preparedStatement = connection.prepareStatement(insertData);
                     preparedStatement.setString(1, String.valueOf(UserDetail.getCustomerID()));
@@ -116,14 +135,16 @@ public class CardProductController implements Initializable {
                     preparedStatement.setString(5, String.valueOf(total));
                     preparedStatement.setString(6, String.valueOf(sqlDate));
                     preparedStatement.setString(7, UserDetail.getUsername());
-
                     preparedStatement.executeUpdate();
 
+                    // Update the stock of the product after the order
                     int upStock = checkStck - quantity;
 
+                    // Format the product image path for database storage
                     prod_image = prod_image.replace("\\", "\\\\");
 
-                    String updateStock = "UPDATE Product SET product_name =? , type = ? , stock=?, price = ?, status = ?, image = ?, date =? WHERE product_id = ?";
+                    // Update the product details in the Product table
+                    String updateStock = "UPDATE Product SET product_name =?, type = ?, stock=?, price = ?, status = ?, image = ?, date =? WHERE product_id = ?";
                     preparedStatement = connection.prepareStatement(updateStock);
                     preparedStatement.setString(1, card_product_name.getText());
                     preparedStatement.setString(2, type);
@@ -134,6 +155,8 @@ public class CardProductController implements Initializable {
                     preparedStatement.setString(7, String.valueOf(sqlDate));
                     preparedStatement.setString(8, productID);
                     preparedStatement.executeUpdate();
+
+                    // Display success alert to the user
                     alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Mensaje de informacion");
                     alert.setHeaderText(null);
@@ -142,13 +165,17 @@ public class CardProductController implements Initializable {
 
                     mainController.menuGetTotal();
                 }
-
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
+    /**
+     * Initializes the controller class.
+     * This method is called automatically after the FXML file is loaded.
+     * It sets up the spinner component with a range of values for user selection.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         card_spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0));
