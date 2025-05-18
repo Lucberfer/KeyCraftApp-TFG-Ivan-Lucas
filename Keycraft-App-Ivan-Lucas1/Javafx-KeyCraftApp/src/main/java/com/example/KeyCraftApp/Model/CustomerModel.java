@@ -10,6 +10,16 @@ public class CustomerModel {
     private String date;
     private String em_username;
 
+    /**
+     * @param id
+     * @param customerId
+     * @param productId
+     * @param productName
+     * @param quantity
+     * @param price
+     * @param date
+     * @param emUsername
+     */
     public CustomerModel(Integer id, String customerId, String productId, String productName, String quantity, String price, String date, String emUsername) {
         this.id = id;
         customer_id = customerId;

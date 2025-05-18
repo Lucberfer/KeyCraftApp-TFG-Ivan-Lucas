@@ -12,6 +12,17 @@ public class ProductData {
     private String image;
     private String dates;
 
+    /**
+     * @param id
+     * @param productId
+     * @param productName
+     * @param type
+     * @param stock
+     * @param price
+     * @param status
+     * @param image
+     * @param date
+     */
     public ProductData(
             Integer id,
             String productId,
